@@ -1,2 +1,5 @@
 # agoge
-A basic RESTFul go framework
+
+agoge: a basic RESTFul go framework for fast developing`
+
+ß
