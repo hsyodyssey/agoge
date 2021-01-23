@@ -1,0 +1,5 @@
+package agogedb
+
+func TestLevelDB() {
+
+}
