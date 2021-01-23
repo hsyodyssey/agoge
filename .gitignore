@@ -22,3 +22,12 @@
 .idea
 .settings
 .project
+
+# Local test dat
+*.dat
+../*.dat
+../../*.dat
+
+*.csv
+../*.csv
+../../*.csv
