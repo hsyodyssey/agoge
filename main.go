@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 
+	"github.com/hsyodyssey/agoge/agogedb"
 	"github.com/syndtr/goleveldb/leveldb"
 )
 
@@ -21,7 +22,7 @@ func main() {
 	// r := router.SetupRouter()
 	// r.Run()
 
-	db, err := leveldb.OpenFile("db/test", nil)
+	db, err := leveldb.OpenFile("agogedb/test/level", nil)
 	if err != nil {
 		log.Fatal("Test LevelDb Go")
 	}
@@ -39,10 +40,12 @@ func main() {
 	if err != nil {
 		log.Fatal("Test LevelDb Go")
 	}
+
+	agogedb.TestRocksDB()
 }
 
 func initLevelDb() {
-	db, err := leveldb.OpenFile("db/test", nil)
+	db, err := leveldb.OpenFile("agogedb/test/level", nil)
 	if err != nil {
 		log.Fatal("Yikes!")
 	}
