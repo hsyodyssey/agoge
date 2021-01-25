@@ -32,4 +32,5 @@
 ../*.csv
 ../../*.csv
 
-agogedb/test
+agogedb/test/level/test
+agogedb/test/rocks/test
