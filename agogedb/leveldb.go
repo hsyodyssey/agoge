@@ -8,6 +8,8 @@ import (
 	"github.com/syndtr/goleveldb/leveldb"
 )
 
+var LLDB *leveldb.DB
+
 func TestLevelDB() {
 	db, err := leveldb.OpenFile("agogedb/test/level", nil)
 	if err != nil {

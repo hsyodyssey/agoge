@@ -7,6 +7,8 @@ import (
 	"github.com/tecbot/gorocksdb"
 )
 
+var RocksDB *gorocksdb.DB
+
 func TestRocksDB() {
 	bbto := gorocksdb.NewDefaultBlockBasedTableOptions()
 	bbto.SetBlockCache(gorocksdb.NewLRUCache(3 << 30))
