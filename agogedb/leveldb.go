@@ -19,7 +19,7 @@ func TestLevelDB() {
 	err = db.Put([]byte("1"), []byte("1"), nil)
 	err = db.Put([]byte("2"), []byte("2"), nil)
 	err = db.Put([]byte("3"), []byte("3"), nil)
-	err = db.Put([]byte("hsy"), []byte(""), nil)
+	err = db.Put([]byte("hsy"), []byte("123"), nil)
 
 	if err != nil {
 		log.Fatal(err)
@@ -29,7 +29,7 @@ func TestLevelDB() {
 		key := iter.Key()
 		value := iter.Value()
 		t := time.Now()
-		fmt.Printf("[LevelDB] [%d-%02d-%02d %02d:%02d:%02d 00:00] Key: %s | Value : %s\n", t.Year(), t.Month(), t.Day(), t.Hour(), t.Minute(), t.Second(), key, value)
+		fmt.Printf("[LevelDB] [%d-%02d-%02d %02d:%02d:%02d] Key: %s | Value : %s\n", t.Year(), t.Month(), t.Day(), t.Hour(), t.Minute(), t.Second(), key, value)
 	}
 
 	iter.Release()
