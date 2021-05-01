@@ -33,7 +33,7 @@ func TestRocksDB() {
 	for it = it; it.Valid(); it.Next() {
 		key := it.Key()
 		value := it.Value()
-		fmt.Printf("Key: %s Value: %s\n", key.Data(), value.Data())
+		fmt.Printf("[Rocksdb] Key: %s Value: %s\n", key.Data(), value.Data())
 		key.Free()
 		value.Free()
 
