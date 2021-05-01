@@ -1,27 +1,53 @@
 package agogedb
 
 import (
-	"github.com/hsyodyssey/agoge/config"
+	"fmt"
+
 	"github.com/hsyodyssey/agoge/dao"
-	"github.com/hsyodyssey/agoge/router"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )
 
+var MysqlDB *gorm.DB
 var err error
 
-//TODO
-// Add mysql related function
+// DBConfig represents db configuration
+type DBConfig struct {
+	Host     string
+	Port     int
+	User     string
+	DBName   string
+	Password string
+}
 
-func TestMysql() {
-	config.DB, err = gorm.Open(mysql.Open(config.DbURL(config.BuildDBConfig())), &gorm.Config{})
+func BuildDBConfig() *DBConfig {
+	dbConfig := DBConfig{
+		Host:     "127.0.0.1",
+		Port:     3306,
+		User:     "hsylocal",
+		Password: "hanslocal",
+		DBName:   "agoge",
+	}
+	return &dbConfig
+}
+
+func DbURL(dbConfig *DBConfig) string {
+	return fmt.Sprintf(
+		"%s:%s@tcp(%s:%d)/%s?charset=utf8mb4&parseTime=True&loc=Local",
+		dbConfig.User,
+		dbConfig.Password,
+		dbConfig.Host,
+		dbConfig.Port,
+		dbConfig.DBName,
+	)
+}
+
+func init() {
+	MysqlDB, err = gorm.Open(mysql.Open(DbURL(BuildDBConfig())), &gorm.Config{})
 
 	if err != nil {
 		panic(err)
 	}
+	MysqlDB.AutoMigrate(&dao.Testtable{})
 
-	config.DB.AutoMigrate(&dao.Testtable{})
-
-	r := router.SetupRouter()
-	r.Run()
 }

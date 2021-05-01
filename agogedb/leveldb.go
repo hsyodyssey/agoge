@@ -14,16 +14,17 @@ func TestLevelDB() {
 		log.Fatal("Test LevelDb Go")
 	}
 	defer db.Close()
-	iter := db.NewIterator(nil, nil)
 
-	err = db.Put([]byte("1"), []byte("1"), nil)
-	err = db.Put([]byte("2"), []byte("2"), nil)
-	err = db.Put([]byte("3"), []byte("3"), nil)
+	_ = db.Put([]byte("1"), []byte("1"), nil)
+	_ = db.Put([]byte("2"), []byte("2"), nil)
+	_ = db.Put([]byte("3"), []byte("3"), nil)
 	err = db.Put([]byte("hsy"), []byte("123"), nil)
 
 	if err != nil {
 		log.Fatal(err)
 	}
+
+	iter := db.NewIterator(nil, nil)
 
 	for iter.Next() {
 		key := iter.Key()
@@ -39,14 +40,11 @@ func TestLevelDB() {
 	}
 }
 
-func initLevelDb() {
+func InitLevelDB() *leveldb.DB {
 	db, err := leveldb.OpenFile("agogedb/test/level", nil)
 	if err != nil {
 		log.Fatal("Yikes!")
 	}
-	defer db.Close()
-	err = db.Put([]byte("1"), []byte("1"), nil)
-	err = db.Put([]byte("2"), []byte("2"), nil)
-	err = db.Put([]byte("3"), []byte("3"), nil)
-	db.Close()
+
+	return db
 }
