@@ -1,6 +1,7 @@
 package service
 
 import (
+	"fmt"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -9,23 +10,20 @@ import (
 )
 
 func GetAllTests(c *gin.Context) {
-	var testtable []dao.Testtable
-	err := model.GetAllTests(&testtable)
-
-	// fmt.Println(testtable[1])
+	var testtables []dao.Testtable
+	err := model.GetAllTests(&testtables)
 
 	if err != nil {
 		c.AbortWithStatus(http.StatusNotFound)
 	} else {
-		c.JSON(http.StatusOK, testtable)
+		c.JSON(http.StatusOK, testtables)
 	}
 }
 
 func GetFirstTest(c *gin.Context) {
 	var testtable dao.Testtable
 	err := model.GetFirstTest(&testtable)
-
-	// fmt.Println(testtable[1])
+	fmt.Println(testtable)
 
 	if err != nil {
 		c.AbortWithStatus(http.StatusNotFound)
