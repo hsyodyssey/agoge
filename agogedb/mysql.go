@@ -42,7 +42,7 @@ func DbURL(dbConfig *DBConfig) string {
 	)
 }
 
-func init() {
+func InitMysql() {
 	MysqlDB, err = gorm.Open(mysql.Open(DbURL(BuildDBConfig())), &gorm.Config{})
 
 	if err != nil {
