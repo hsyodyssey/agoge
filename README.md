@@ -1,10 +1,10 @@
 # agoge
 
-agoge: a basic Backend Go framework for fast developing
+agoge: a basic Backend Golang framework for fast developing
 
 - agoge is a fast develop backend & blockchain framework.
-- Current support database/blockchain: mysql
+- Current support database/blockchain: mysql/LevelDB/RocksDB
 
 ## TODO
 
-- Support: levelDB, RocksDB, Ethereum, Quorum, Hyperledger Fabric
+- Support: Ethereum, Quorum, Hyperledger Fabric
